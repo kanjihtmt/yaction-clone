@@ -1,7 +1,35 @@
 = simple_form_for(@product) do |f|
   = f.error_notification
 
-  .form-inputs
+  = f.input :name
+  = f.input :description, as: :text, input_html: {rows: 10, class: 'textarea'}
+  = f.input :price
+  .form-group
+    = f.label :start_date
+    .datetime
+      = f.datetime_select :start_date, start_year: Date.today.year, end_year: Date.today.year + 1
+  .form-group
+    = f.label :end_date
+    .datetime
+      = f.datetime_select :end_date, start_year: Date.today.year, end_year: Date.today.year + 1
+  .form-group
+    = f.label :image
+    %div
+      = image_tag @product.image.url if @product.image?
+      = f.file_field :image
+      = f.hidden_field :image_cache
+  .form-group
+    = f.label :image2
+    %div
+      = image_tag @product.image2.url if @product.image2?
+      = f.file_field :image2
+      = f.hidden_field :image2_cache
+  .form-group
+    = f.label :image3
+    %div
+      = image_tag @product.image3.url if @product.image3?
+      = f.file_field :image3
+      = f.hidden_field :image3_cache
 
   .form-actions
-    = f.button :submit
+    = f.button :submit, '登録する', {class: 'btn btn-primary'}

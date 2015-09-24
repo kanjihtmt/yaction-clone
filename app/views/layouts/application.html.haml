@@ -4,7 +4,7 @@
     %meta{charset: 'utf-8'}
     %meta{content: 'IE=edge', 'http-equiv': "X-UA-Compatible"}
     %meta{name: 'viewport', content: 'width=device-width, initial-scale=1'}
-    %title Yahoo Auction clone
+    %title Yahoo Auction Clone
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -26,7 +26,11 @@
               %a{href: '#about'} About
             - if user_signed_in?
               %li
+                = link_to '出品', new_product_path
+              %li
                 = link_to 'ログアウト', destroy_user_session_path, method: :delete
+              %li
+                = link_to 'マイページ', destroy_user_session_path, method: :delete
             - else
               %li
                 = link_to '登録', new_registration_path('user')
