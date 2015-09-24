@@ -9,3 +9,6 @@ ja:
         price: 開始価格
         start_date: 開始日時
         end_date: 終了日時
+        image: メイン画像
+        image2: サブ画像(1)
+        image3: サブ画像(2)

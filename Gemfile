@@ -22,6 +22,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'squeel'
 gem 'ransack'
 gem 'carrierwave'
+gem 'rmagick', require: 'RMagick'
 
 group :development do
   gem 'better_errors'
