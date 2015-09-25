@@ -1,2 +1,13 @@
-%h1 Mypage::Users#edit
-%p Find me in app/views/mypage/users/edit.html.haml
+.panel.panel-default
+  .panel-heading
+    %h4 プロフィールの編集
+  .panel-body
+    = simple_form_for(@user, url: {action: :update}) do |f|
+      = f.error_notification
+
+      = f.input :email
+
+      .form-actions
+        = f.button :submit, '登録する', {class: 'btn btn-primary'}
+
+    = link_to 'ダッシュボードに戻る', mypage_users_path

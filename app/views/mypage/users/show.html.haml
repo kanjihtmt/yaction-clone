@@ -35,6 +35,5 @@
           .panel-body
             .btn-group.btn-group-justified{role: 'group'}
               .btn-group{role: "group"}
-                %a.btn.btn-default
-                  プロフィールの編集
+                = link_to 'プロフィールの編集', edit_mypage_users_path, class: 'btn btn-default'
       .col-md-6
