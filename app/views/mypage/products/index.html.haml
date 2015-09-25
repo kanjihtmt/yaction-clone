@@ -1,0 +1,10 @@
+.panel.panel-default
+  .panel-heading
+    %h4 商品一覧
+  .panel-body
+    .row
+      - @products.each do |product|
+        .image-cell.col-md-2.col-sm-3.col-xs-6
+          = link_to image_tag(product.image_url(:thumb)), mypage_product_path(product)
+          %br
+          = link_to product.name, mypage_product_path(product)

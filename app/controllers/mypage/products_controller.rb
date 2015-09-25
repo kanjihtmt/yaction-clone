@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class Mypage::ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i(index show)
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 

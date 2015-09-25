@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
-  root 'products#index'
-  resources :products
+  root 'tops#index'
 
   namespace :mypage do
-    resources :users, only: %i(edit)
+    resource :users, only: %i(show edit update)
+    resources :products
   end
 
   devise_for :users

@@ -26,11 +26,9 @@
               %a{href: '#about'} About
             - if user_signed_in?
               %li
-                = link_to '出品', new_product_path
-              %li
                 = link_to 'ログアウト', destroy_user_session_path, method: :delete
               %li
-                = link_to 'マイページ', destroy_user_session_path, method: :delete
+                = link_to 'マイページ', mypage_users_path
             - else
               %li
                 = link_to '登録', new_registration_path('user')

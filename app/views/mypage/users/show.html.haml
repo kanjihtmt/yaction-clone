@@ -1,0 +1,42 @@
+.panel.panel-primary
+  .panel-heading
+    %h4 ダッシュボート
+  .panel-body
+    .row
+      .sale.col-md-6
+        .panel.panel-primary
+          .panel-heading
+            買う
+          .panel-body
+            .btn-group{role: "group"}
+              %a.btn.btn-default
+                入札中のオークション
+            .btn-group{role: "group"}
+              %a.btn.btn-default
+                落札したオークション
+      .buy.col-md-6
+        .panel.panel-primary
+          .panel-heading
+            売る
+          .panel-body
+            .btn-group{role: "group"}
+              = link_to '商品一覧', mypage_products_path, class: 'btn btn-default'
+            .btn-group{role: "group"}
+              %a.btn.btn-default
+                出品中
+            .btn-group{role: "group"}
+              %a.btn.btn-default
+                出品終了分
+            .btn-group{role: "group"}
+              %a.btn.btn-default
+                出品する
+      .col-md-6
+        .panel.panel-primary
+          .panel-heading
+            ユーザー情報
+          .panel-body
+            .btn-group.btn-group-justified{role: 'group'}
+              .btn-group{role: "group"}
+                %a.btn.btn-default
+                  プロフィールの編集
+      .col-md-6
