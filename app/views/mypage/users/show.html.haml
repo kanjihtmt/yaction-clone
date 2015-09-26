@@ -20,11 +20,11 @@
             売る
           .panel-body
             .btn-group{role: "group"}
-              = link_to '商品一覧', mypage_products_path, class: 'btn btn-default'
+              = link_to '全商品', mypage_products_path, class: 'btn btn-default'
             .btn-group{role: "group"}
-              = link_to '出品中', mypage_products_path(status: Product::PUBLISHED), class: 'btn btn-default'
+              = link_to '出品中の商品', mypage_products_path(status: Product::PUBLISHED), class: 'btn btn-default'
             .btn-group{role: "group"}
-              = link_to '出品終了分', mypage_products_path(status: Product::UNUSED), class: 'btn btn-default'
+              = link_to '出品が終了した商品', mypage_products_path(status: Product::UNUSED), class: 'btn btn-default'
             .btn-group{role: "group"}
               %a.btn.btn-default
                 出品する

@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-heading
-    %h4 商品一覧
+    %h4= get_title_of_products(params[:status])
   .panel-body
     .row
       - @products.each do |product|
