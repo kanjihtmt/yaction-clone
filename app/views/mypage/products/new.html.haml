@@ -2,5 +2,5 @@
   .panel-heading
     %h4 商品の登録
   .panel-body
-    = render 'form'
-    = link_to '戻る', products_path
+    = render 'form', url_path: mypage_products_path
+    = link_to '戻る', mypage_products_path

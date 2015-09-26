@@ -3,24 +3,23 @@ class Mypage::ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   def index
-    @products = Product.status(params[:status])
+    @products = Product.where(seller: current_user).status(params[:status])
   end
 
   def show
   end
 
   def new
-    @product = Product.new
+    @product = current_user.products.build
   end
 
   def edit
   end
 
   def create
-    @product = Product.new(product_params)
-    @product.seller = current_user
+    @product = current_user.products.build(product_params)
     if @product.save
-      redirect_to @product, notice: '商品を登録しました。'
+      redirect_to mypage_products_path, notice: '商品を登録しました。'
     else
       render :new
     end
@@ -28,7 +27,7 @@ class Mypage::ProductsController < ApplicationController
 
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: '商品を更新しました。'
+      redirect_to mypage_products_path, notice: '商品を更新しました。'
     else
       render :edit
     end
@@ -36,12 +35,12 @@ class Mypage::ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_url, notice: '商品を削除しました。'
+    redirect_to mypage_products_url, notice: '商品を削除しました。'
   end
 
   private
     def set_product
-      @product = Product.find(params[:id])
+      @product = Product.find_by(id: params[:id], seller: current_user)
     end
 
     def product_params
