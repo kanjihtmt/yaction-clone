@@ -23,6 +23,7 @@ gem 'squeel'
 gem 'ransack'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
+gem 'rails-i18n'
 
 group :development do
   gem 'better_errors'
