@@ -6,6 +6,14 @@ class Mypage::ProductsController < ApplicationController
     @products = Product.where(seller: current_user).status(params[:status])
   end
 
+  def exibit
+    @products = Product.where(seller: current_user).status(Product::DRAFT)
+  end
+
+  def pullup
+    #@product.published!
+  end
+
   def show
   end
 
