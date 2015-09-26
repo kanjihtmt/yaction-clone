@@ -29,6 +29,8 @@
                 = link_to 'ログアウト', destroy_user_session_path, method: :delete
               %li
                 = link_to 'マイページ', mypage_users_path
+              %li
+                %span.greeting= "ようこそ#{current_user.try(:name)}さん"
             - else
               %li
                 = link_to '登録', new_registration_path('user')

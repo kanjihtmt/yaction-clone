@@ -5,6 +5,7 @@
     = simple_form_for(@user, url: {action: :update}) do |f|
       = f.error_notification
 
+      = f.input :name
       = f.input :email
 
       .form-actions
