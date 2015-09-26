@@ -1,25 +1,26 @@
 class Mypage::ProductsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_product, except: %i(index new create exibit)
+  before_action :set_draft_product, only: %i(exibit pullup)
 
   def index
     @products = Product.where(seller: current_user).status(params[:status])
   end
 
   def exibit
-    @products = Product.where(seller: current_user, status: Product::DRAFT)
   end
 
   def pullup
-    if @product.publishable?
-      redirect_to exibit_mypage_products_path,
-        alert: 'オークション終了日時が過去になっています。内容を編集してから再度出品して下さい。' and return
+    unless @product.publishable?
+      flash.now['alert'] = 'オークション終了日時が過去になっています。内容を編集してから再度出品して下さい。'
+      render :exibit and return
     end
 
     if @product.published!
       redirect_to exibit_mypage_products_path, notice: "商品ID:#{@product.id}の商品を出品しました。"
     else
-      redirect_to exibit_mypage_products_path, alert: '出品に失敗しました。'
+      flash.now['alert'] = '出品に失敗しました。'
+      render :exibit
     end
   end
 
@@ -58,6 +59,10 @@ class Mypage::ProductsController < ApplicationController
   private
     def set_product
       @product = Product.find_by(id: params[:id], seller: current_user)
+    end
+
+    def set_draft_product
+      @products = Product.where(seller: current_user, status: Product::DRAFT)
     end
 
     def product_params
