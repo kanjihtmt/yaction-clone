@@ -1,0 +1,20 @@
+.panel.panel-default
+  .panel-heading
+    %h4 出品処理
+    %p ※以下の未出品商品の中から出品したい商品を「出品ボタン」をクリックして出品処理を行って下さい。
+  .panel-body
+    .row
+      - @products.each do |product|
+        .col-md-2.col-sm-3.col-xs-6
+          .thumbnail
+            = product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png')
+            .caption
+              %h5= truncate(product.name, length: 11)
+              %p
+                =link_to '出品', pullup_mypage_product_path(product), method: :patch, class: 'btn btn-danger'
+                =link_to '編集', edit_mypage_product_path(product), class: 'btn btn-primary'
+.row
+  .col-md-12
+    = link_to 'ダッシュボードに戻る', mypage_users_path
+    \|
+    = link_to '商品を追加', new_mypage_product_path

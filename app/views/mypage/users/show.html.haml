@@ -26,8 +26,7 @@
             .btn-group{role: "group"}
               = link_to '出品が終了した商品', mypage_products_path(status: Product::UNUSED), class: 'btn btn-default'
             .btn-group{role: "group"}
-              %a.btn.btn-default
-                出品する
+              = link_to '出品する', exibit_mypage_products_path, class: 'btn btn-default'
       .col-md-6
         .panel.panel-primary
           .panel-heading

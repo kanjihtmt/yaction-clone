@@ -1,17 +1,26 @@
 class Mypage::ProductsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_action :set_product, except: %i(index new create exibit)
 
   def index
     @products = Product.where(seller: current_user).status(params[:status])
   end
 
   def exibit
-    @products = Product.where(seller: current_user).status(Product::DRAFT)
+    @products = Product.where(seller: current_user, status: Product::DRAFT)
   end
 
   def pullup
-    #@product.published!
+    if @product.publishable?
+      redirect_to exibit_mypage_products_path,
+        alert: 'オークション終了日時が過去になっています。内容を編集してから再度出品して下さい。' and return
+    end
+
+    if @product.published!
+      redirect_to exibit_mypage_products_path, notice: "商品ID:#{@product.id}の商品を出品しました。"
+    else
+      redirect_to exibit_mypage_products_path, alert: '出品に失敗しました。'
+    end
   end
 
   def show

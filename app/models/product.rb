@@ -26,4 +26,8 @@ class Product < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
+
+  def publishable?
+    self.end_date < Time.now
+  end
 end
