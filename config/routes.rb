@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  root 'tops#index'
+  root 'auctions#index'
+
+  resources :auctions, only: %i(show)
 
   namespace :mypage do
     resource :users, only: %i(show edit update)
