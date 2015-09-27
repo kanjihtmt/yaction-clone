@@ -1,2 +1,11 @@
-%h1 Auctions#index
-%p Find me in app/views/auctions/index.html.haml
+.row
+  .col-md-12
+    %h3 出品中のオークション一覧
+
+.row
+  - @products.each do |product|
+    .col-md-2.col-sm-3.col-xs-6
+      = link_to product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png'),
+          auction_path(product)
+      %br
+      = link_to product.name.truncate(10), auction_path(product)

@@ -1,2 +1,29 @@
-%h1 Auctions#show
-%p Find me in app/views/auctions/show.html.haml
+.row
+  .col-md-7
+    .bs-example{'data-example-id': 'simple-carousel'}
+      #product-image.carousel.slide{'data-ride': 'carousel'}
+      %ol.carousel-indicators
+        %li.active{'data-target': 'product-image', 'data-slide-to': 0}
+        %li.active{'data-target': 'product-image', 'data-slide-to': 1}
+        %li.active{'data-target': 'product-image', 'data-slide-to': 2}
+      .carousel-inner{role: 'listbox'}
+        .item
+          = image_tag(@product.image2_url)
+          .carousel-caption
+            = @product.name
+        .item.active
+          = image_tag(@product.image_url)
+          .carousel-caption
+            = @product.name
+        .item
+          = image_tag(@product.image3_url)
+          .carousel-caption
+            = @product.name
+      %a.left.carousel-control{href: '#product-image', role: 'button', 'data-slide': 'prev'}
+        %span.glyphicon.glyphicon-chevron-left{'aria-hidden': 'true'}
+        %span.sr-only Previous
+      %a.right.carousel-control{href: '#product-image', role: "button", 'data-slide': "next"}
+        %span.glyphicon.glyphicon-chevron-right{'aria-hidden': 'true'}
+        %span.sr-only Next
+  .col-md-5
+    あああ
