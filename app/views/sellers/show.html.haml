@@ -1,0 +1,9 @@
+.seller
+  .row
+    .col-md-12
+      = render 'tabs'
+  .row.aboutme
+    .col-md-12
+      %p= "ユーザID: #{@seller.name}"
+      %p= simple_format h(@seller.aboutme)
+

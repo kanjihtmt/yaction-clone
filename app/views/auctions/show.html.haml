@@ -32,7 +32,7 @@
                 %span 入札件数
                 %p
                   %span.biddings_count= @product.biddings_count
-                  = link_to '入札履歴', '#'
+                  = link_to '入札履歴'
             %td
               .to-endtime
                 %span 残り時間
@@ -48,10 +48,11 @@
           %tr
             %td{colspan: 2}
               %p.em-title 出品者情報
-              %p= "#{@product.seller.name}さん"
-              %p= "評価: 1000"
+              %p
+                = link_to @product.seller.name, seller_show_path(@product.seller)
+                さん
+              %p= "評価: todo"
   .row
     .col-md-12
       .title 商品説明
       .description= simple_format h(@product.description)
-

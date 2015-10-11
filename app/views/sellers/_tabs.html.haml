@@ -1,0 +1,7 @@
+%ul.nav.nav-tabs
+  %li{role: 'presentation', class: action_name == 'rating' ? 'active' : ''}
+    = link_to '評価', seller_rating_path(@seller)
+  %li{role: 'presentation', class: action_name == 'history' ? 'active' : ''}
+    = link_to '出品リスト', seller_history_path(@seller)
+  %li{role: 'presentation', class: action_name == 'show' ? 'active' : ''}
+    = link_to '自己紹介', seller_show_path(@seller)

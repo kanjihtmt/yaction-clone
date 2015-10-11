@@ -1,6 +1,12 @@
 Rails.application.routes.draw do
   root 'auctions#index'
 
+  resources :sellers, only: %i(show history rating) do
+    get :show
+    get :history
+    get :rating
+  end
+
   resources :auctions, only: %i(show)
 
   namespace :mypage do

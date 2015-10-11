@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       product: 商品
+      user: ユーザ
     attributes:
       product:
         name: 商品名
@@ -12,3 +13,5 @@ ja:
         image: メイン画像
         image2: サブ画像(1)
         image3: サブ画像(2)
+      user:
+        aboutme: 自己紹介文
