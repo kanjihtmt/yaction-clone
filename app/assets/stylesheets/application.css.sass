@@ -17,6 +17,13 @@
 @import "slick"
 @import "slick-theme"
 
+@mixin title
+  background: #e2e1da
+  margin-bottom: 10px
+  padding: 15px
+  line-height: 1.38
+  font-size: 112.5%
+
 html,body
   height: 100%
 
@@ -57,11 +64,7 @@ span.greeting
 
 .product
   .title
-    background: #e2e1da
-    margin-bottom: 10px
-    padding: 15px
-    line-height: 1.38
-    font-size: 112.5%
+    @include title
 
   .carousel
     text-align: center
@@ -102,5 +105,14 @@ span.greeting
     font-size: 1.5em
 
 .seller
-  .aboutme
+  .aboutme, .products, .ratings
     margin-top: 20px
+  td.image
+    width: 120px
+    height: 120px
+
+.ratings
+  .name
+    font-size: 1.5em
+  .title
+    @include title

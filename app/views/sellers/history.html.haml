@@ -1,1 +1,24 @@
-= render 'tabs'
+.seller
+  .row
+    .col-md-12
+      = render 'tabs'
+
+  .row.products
+    .col-md-12
+      .panel.panel-default
+        %table.table
+          %tr
+            %th{colspan: 2} 商品名
+            %th 現在価格
+            %th 入札数
+            %th 残り時間
+          - @products.each do |product|
+            %tr
+              %td.image= product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png')
+              %td= product.name
+              %td= product.max_bidding.try(:price)
+              %td= product.biddings_count
+              %td= interval(:day, Time.now, product.end_date) == 0 ? '終了' : "#{interval(:day, Time.now, product.end_date)}日"
+
+      = paginate(@products)
+
