@@ -6,7 +6,7 @@
     .col-md-8
       .carousel
         .carousel-productimages
-          - %w('' 2 3).each {|i|
+          - ['', 2, 3].each do |i|
             %div= image_tag @product.send("image#{i}_url")
           end
       .detail
@@ -31,7 +31,7 @@
               .bidding-count
                 %span 入札件数
                 %p
-                  = 1
+                  %span.biddings_count= @product.biddings_count
                   = link_to '入札履歴', '#'
             %td
               .to-endtime
