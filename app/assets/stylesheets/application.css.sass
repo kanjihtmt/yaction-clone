@@ -14,6 +14,8 @@
 @import "bootstrap-sprockets"
 @import "bootstrap"
 @import "font-awesome"
+@import "slick"
+@import "slick-theme"
 
 html,body
   height: 100%
@@ -52,5 +54,55 @@ span.greeting
   position: relative
   display: block
   padding: 15px 15px
-.bs-example
-  width: 600px
+
+.product
+  .title
+    background: #e2e1da
+    margin-bottom: 10px
+    padding: 15px
+    line-height: 1.38
+    font-size: 112.5%
+
+  .carousel
+    text-align: center
+    width: 100%
+    background: #ccc
+
+    .carousel-productimages
+      width: 600px
+      margin: 0 auto
+
+  .detail
+    margin: 20px 0
+    background: #f1f0e8
+    padding: 15px 10px
+
+    .left
+      float: left
+      display: inline
+      width: 50%
+    .right
+      float: right
+      display: inline
+      width: 50%
+
+    .item
+      span.item-title
+        display: inline-block
+        width: 7em
+      span.item-content
+        &:before
+          content: ': '
+  .price-area
+    background: #f1f0e8
+    .price-current
+      color: #cb5201
+      font-size: 150%
+  .em-title
+    margin-bottom: 10px
+    font-weight: 700
+
+  .detail:after
+    content: ' '
+    display: table
+    clear: both

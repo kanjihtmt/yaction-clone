@@ -24,6 +24,7 @@ gem 'ransack'
 gem 'carrierwave'
 gem 'rmagick', require: 'RMagick'
 gem 'rails-i18n'
+gem 'jquery-slick-rails'
 
 group :development do
   gem 'better_errors'
