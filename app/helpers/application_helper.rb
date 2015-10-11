@@ -11,4 +11,9 @@ module ApplicationHelper
 
     title
   end
+
+  def interval(type, from, to)
+    return 0 if from > to || !%i(year month day).include?(type)
+    to.send(type) - from.send(type)
+  end
 end
