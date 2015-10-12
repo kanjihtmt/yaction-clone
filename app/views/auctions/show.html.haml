@@ -8,7 +8,6 @@
         .carousel-productimages
           - ['', 2, 3].each do |i|
             %div= image_tag @product.send("image#{i}_url")
-          end
       .detail
         .item
           %span.item-title 開始日
@@ -44,7 +43,7 @@
               %p.price-current= number_to_currency(@product.max_bidding ? @product.max_bidding.try(:price) : @product.price)
               .row
                 .col-md-12
-                  %a.btn.btn-warning.btn-lg.btn-block{href: '#'} 入札する
+                  = link_to '入札する', set_price_auction_path(@product.id), {class: 'btn btn-warning btn-lg btn-block'}
           %tr
             %td{colspan: 2}
               %p.em-title 出品者情報

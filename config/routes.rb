@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     get :rating
   end
 
-  resources :auctions, only: %i(show)
+  resources :auctions, only: %i(show bid) do
+    get :set_price, on: :member
+    post :bid, on: :collection
+  end
 
   namespace :mypage do
     resource :users, only: %i(show edit update)
