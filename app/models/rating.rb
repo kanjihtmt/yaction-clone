@@ -8,6 +8,8 @@ class Rating < ActiveRecord::Base
   belongs_to :seller, class_name: 'User', counter_cache: true
   belongs_to :bidder, class_name: 'User'
 
+  validates :seller_id, :bidder_id, :value, :comment, presence: true
+
   def self.aggregate(seller_id)
     aggregates = {}
     ['GOOD', 'NORMAL', 'BAD'].each do |status|

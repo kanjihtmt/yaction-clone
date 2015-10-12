@@ -23,9 +23,13 @@ class Product < ActiveRecord::Base
   has_many :biddings, dependent: :destroy
   has_many :bidders, class_name: 'User', through: :biddings
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :image,  ImageUploader
   mount_uploader :image2, ImageUploader
   mount_uploader :image3, ImageUploader
+
+  validates :name, :seller_id, :start_date, :end_date, presence: true
+  validates :price, presence: true, numericality: {only: :integer, greater_than: 0}
+  validates :image, presence: true
 
   def publishable?
     self.end_date > Time.now
