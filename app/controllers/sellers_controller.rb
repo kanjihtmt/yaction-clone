@@ -10,6 +10,9 @@ class SellersController < ApplicationController
   end
 
   def rating
+    @ratings = @seller.ratings.page(params[:page]).per(PAGE_MAX)
+                   .where(value: params[:filter]).order(created_at: :desc)
+    @rating = Rating.aggregate(@seller.id)
   end
 
   private

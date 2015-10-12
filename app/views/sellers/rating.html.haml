@@ -1,1 +1,65 @@
 = render 'tabs'
+
+.seller
+  .ratings
+    .row
+      .col-md-12
+        .title 評価一覧
+    .row
+      .col-md-12
+        .name= "#{@seller.name} (#{@seller.ratings_count})"
+    .row
+      .col-md-12
+        %h2 評価の詳細
+
+        .panel.panel-default
+          %table.table
+            %tr
+              %th 総合評価
+              %th 良い評価の割合
+              %th 直近の評価の内訳
+              %th
+                1周間
+                %br
+                以内
+              %th
+                1ヶ月
+                %br
+                以内
+              %th
+                1年
+                %br
+                以内
+              %th
+                100件
+                %br
+                以内
+              %th
+                1000件
+                %br
+                以内
+            %tr
+              %td{rowspan: 3}= @seller.ratings_count
+              %td{rowspan: 3}= "80%"
+              %td 良い
+              %td.good= @rating.good_count_of_week
+              %td.good= @rating.good_count_of_month
+              %td.good= @rating.good_count_of_year
+              %td.good= @rating.good_count_in_hundred
+              %td.good= @rating.good_count_in_thousand
+            %tr
+              %td どちらでもない
+              %td= @rating.normal_count_of_week
+              %td= @rating.normal_count_of_month
+              %td= @rating.normal_count_of_year
+              %td= @rating.normal_count_in_hundred
+              %td= @rating.normal_count_in_thousand
+            %tr
+              %td 悪い
+              %td.bad= @rating.bad_count_of_week
+              %td.bad= @rating.bad_count_of_month
+              %td.bad= @rating.bad_count_of_year
+              %td.bad= @rating.bad_count_in_hundred
+              %td.bad= @rating.bad_count_in_thousand
+
+
