@@ -1,0 +1,8 @@
+%p 現在の最高入札金額より大きい金額を入力して入札して下さい。
+
+= simple_form_for @bidding, url: bid_auctions_path do |f|
+
+  = f.hidden_field :product_id
+  = f.input :price
+  .actions
+    = f.button :submit , '入札する', {class: 'btn btn-primary'}

@@ -3,6 +3,7 @@ ja:
     models:
       product: 商品
       user: ユーザ
+      bidding: 入札
     attributes:
       product:
         name: 商品名
@@ -15,3 +16,5 @@ ja:
         image3: サブ画像(2)
       user:
         aboutme: 自己紹介文
+      bidding:
+        price: 最高入札価格
