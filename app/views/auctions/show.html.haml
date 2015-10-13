@@ -1,3 +1,4 @@
+- time_limit = interval(:day, Time.now, @product.end_date)
 .product
   .row
     .col-md-12
@@ -7,7 +8,8 @@
       .carousel
         .carousel-productimages
           - ['', 2, 3].each do |i|
-            %div= image_tag @product.send("image#{i}_url")
+            - if @product.send "image#{i}_url"
+              %div= image_tag @product.send("image#{i}_url")
       .detail
         .item
           %span.item-title 開始日
@@ -19,7 +21,10 @@
           %span.item-title 開始価格
           %span.item-content= number_to_currency @product.price
         .item
-          %span.item-title 最高額入札者
+          - if time_limit > 0
+            %span.item-title 最高額入札者
+          - else
+            %span.item-title 落札者
           %span.item-content= @product.max_bidding.try(:bidder).try(:name)
 
     .col-md-4
@@ -34,15 +39,17 @@
             %td
               .to-endtime
                 %span 残り時間
-                %p
-                  = "#{interval(:day, Time.now, @product.end_date)}日"
+                %p= "#{time_limit}日"
           %tr.price-area
             %td{colspan: 2}
               %p.em-title 現在価格
               %p.price-current= number_to_currency(@product.max_bidding ? @product.max_bidding.try(:price) : @product.price)
               .row
                 .col-md-12
-                  = link_to '入札する', set_price_auction_path(@product.id), {class: 'btn btn-warning btn-lg btn-block'}
+                  - if time_limit > 0
+                    = link_to '入札する', set_price_auction_path(@product.id), {class: 'btn btn-warning btn-lg btn-block'}
+                  - else
+                    %p.alert オークションは終了しました。
           %tr
             %td{colspan: 2}
               %p.em-title 出品者情報
