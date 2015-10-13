@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20151012000524) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "biddings", force: :cascade do |t|
     t.integer  "product_id"
     t.integer  "bidder_id"
@@ -63,7 +60,6 @@ ActiveRecord::Schema.define(version: 20151012000524) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "type"
     t.string   "name"
     t.string   "aboutme"
     t.integer  "ratings_count",          default: 0

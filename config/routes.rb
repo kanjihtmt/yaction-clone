@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
 
   namespace :mypage do
-    resource :users, only: %i(show edit update)
+    resource :users, only: %i(edit update)
     resources :products do
       get :exibit, on: :collection
       patch :pullup, on: :member

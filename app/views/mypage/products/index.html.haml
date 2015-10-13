@@ -6,9 +6,9 @@
       - @products.each do |product|
         .image-cell.col-md-2.col-sm-3.col-xs-6
           = link_to product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png'),
-              mypage_product_path(product)
+              edit_mypage_product_path(product)
           %br
-          = link_to product.name, mypage_product_path(product)
+          = link_to product.name, edit_mypage_product_path(product)
 .row
   .col-md-12
     = link_to 'ダッシュボードに戻る', mypage_users_path

@@ -24,9 +24,6 @@ class Mypage::ProductsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
     @product = current_user.products.build
   end
