@@ -7,7 +7,11 @@
         .image-cell.col-md-2.col-sm-3.col-xs-6
           = image_tag bidding.product.image_url(:thumb)
           %div= bidding.product.name
-          %div= bidding.product.status
+          - if expiration?(bidding.product.end_date)
+            %span.btn.btn-xs.btn-info 入札中
+          - else
+            %span.btn.btn-xs.btn-danger 落札済
+            =link_to '評価する', '#', {class: 'btn btn-xs btn-success'}
 .row
   .col-md-12
     = link_to 'ダッシュボードに戻る', mypage_users_path

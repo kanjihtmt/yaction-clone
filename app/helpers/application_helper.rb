@@ -16,4 +16,8 @@ module ApplicationHelper
     return 0 if from > to || !%i(year month day).include?(type)
     to.send(type) - from.send(type)
   end
+
+  def expiration?(date)
+    interval(:day, Time.now, date) == 0 ? false : true
+  end
 end
