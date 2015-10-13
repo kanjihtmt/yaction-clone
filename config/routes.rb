@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   namespace :mypage do
     resource :users, only: %i(show edit update)
     resources :products, except: %i(show) do
+      resource :ratings, only: %i(new create)
       collection do
         get :bade
         get :exibit
