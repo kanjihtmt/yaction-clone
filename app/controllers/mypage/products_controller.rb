@@ -8,7 +8,7 @@ class Mypage::ProductsController < ApplicationController
   end
 
   def bade
-    @biddings = current_user.biddings.where(bidder: current_user)
+    @biddings = Bidding.find_group_by(current_user.id)
   end
 
   def exibit

@@ -21,4 +21,18 @@ class Bidding < ActiveRecord::Base
       errors.add(:price, 'は現在の最高入札価格以上の金額を入力してください')
     end
   end
+
+  def self.find_group_by(bidder_id)
+    sql = "
+SELECT
+  t1.id as product_id, t1.end_date, t1.name, t2.price, t1.seller_id
+FROM
+  products as t1
+    INNER JOIN
+  (SELECT bidder_id, product_id, max(price) as price
+   FROM biddings WHERE bidder_id = ? GROUP BY bidder_id, product_id) as t2
+    ON (t1.id = t2.product_id)"
+
+    find_by_sql [sql, bidder_id]
+  end
 end

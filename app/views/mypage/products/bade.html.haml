@@ -5,9 +5,9 @@
     .row
       - @biddings.each do |bidding|
         .image-cell.col-md-2.col-sm-3.col-xs-6
-          = image_tag bidding.product.image_url(:thumb)
-          %div= bidding.product.name
-          - if expiration?(bidding.product.end_date)
+          = image_tag Product.find(bidding.product_id).image_url(:thumb)
+          %div= bidding.name
+          - if expiration?(bidding.end_date)
             %span.btn.btn-xs.btn-info 入札中
           - else
             %span.btn.btn-xs.btn-danger 落札済
