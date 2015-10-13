@@ -16,8 +16,8 @@ class Bidding < ActiveRecord::Base
     return unless product
     return unless price
 
-    if (product.max_bidding && product.max_bidding.price > price) ||
-       (product.price && product.price > price)
+    if (product.max_bidding && product.max_bidding.price >= price) ||
+       (product.price && product.price >= price)
       errors.add(:price, 'は現在の最高入札価格以上の金額を入力してください')
     end
   end
