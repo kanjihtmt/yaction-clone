@@ -10,6 +10,9 @@ class AuctionsController < ApplicationController
   end
 
   def set_price
+    if @product.seller == current_user
+      redirect_to auction_path(@product), alert: '出品者は入札できません' and return
+    end
     @bidding = current_user.biddings.build
     @bidding.product = @product unless @bidding.product
   end
