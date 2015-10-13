@@ -1,0 +1,13 @@
+.panel.panel-default
+  .panel-heading
+    %h4 入札中・落札したオークション
+  .panel-body
+    .row
+      - @biddings.each do |bidding|
+        .image-cell.col-md-2.col-sm-3.col-xs-6
+          = image_tag bidding.product.image_url(:thumb)
+          %div= bidding.product.name
+          %div= bidding.product.status
+.row
+  .col-md-12
+    = link_to 'ダッシュボードに戻る', mypage_users_path

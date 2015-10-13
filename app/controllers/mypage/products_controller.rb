@@ -7,6 +7,10 @@ class Mypage::ProductsController < ApplicationController
     @products = Product.where(seller: current_user).status(params[:status])
   end
 
+  def bade
+    @biddings = current_user.biddings.where(bidder: current_user)
+  end
+
   def exibit
   end
 

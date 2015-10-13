@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   namespace :mypage do
     resource :users, only: %i(show edit update)
     resources :products, except: %i(show) do
-      get :exibit, on: :collection
+      collection do
+        get :bade
+        get :exibit
+      end
       patch :pullup, on: :member
     end
   end

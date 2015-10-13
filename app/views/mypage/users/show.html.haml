@@ -9,11 +9,7 @@
             買う
           .panel-body
             .btn-group{role: "group"}
-              %a.btn.btn-default
-                入札中のオークション
-            .btn-group{role: "group"}
-              %a.btn.btn-default
-                落札したオークション
+              = link_to '入札中・落札済のオークション', bade_mypage_products_path, class: 'btn btn-default'
       .buy.col-md-6
         .panel.panel-primary
           .panel-heading
