@@ -3,15 +3,28 @@
     %h4 入札中・落札したオークション
   .panel-body
     .row
-      - @biddings.each do |bidding|
-        .image-cell.col-md-2.col-sm-3.col-xs-6
-          = image_tag Product.find(bidding.product_id).image_url(:thumb)
-          %div= bidding.name
-          - if expiration?(bidding.end_date)
-            %span.btn.btn-xs.btn-info 入札中
-          - else
-            %span.btn.btn-xs.btn-danger 落札済
-            =link_to '評価する', '#', {class: 'btn btn-xs btn-success'}
+      .col-md-12
+        .panel.panel-default
+          %table.table
+            %tr
+              %td ステータス
+              %td 商品画像
+              %td 商品名
+              %td 入札価格/落札価格
+              %td オークション終了日時
+              %td 操作
+            - @biddings.each do |bidding|
+              %tr
+                %td
+                  - if expiration?(bidding.end_date)
+                    %span.btn.btn-xs.btn-info 入札中
+                  - else
+                    %span.btn.btn-xs.btn-danger 落札済
+                %td= image_tag Product.find(bidding.product_id).image_url(:thumb), {class: 'list-image-icon'}
+                %td= bidding.name
+                %td= number_to_currency bidding.price
+                %td= l bidding.end_date, format: :long
+                %td= link_to '評価する', '#', {class: 'btn btn-xs btn-success'}
 .row
   .col-md-12
     = link_to 'ダッシュボードに戻る', mypage_users_path
