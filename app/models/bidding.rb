@@ -25,7 +25,7 @@ class Bidding < ActiveRecord::Base
   def self.find_group_by(bidder_id)
     sql = "
 SELECT
-  t1.id as product_id, t1.end_date, t1.name, t2.price, t1.seller_id
+  t1.id as product_id, t1.end_date, t1.name, t2.price, t1.seller_id, t2.bidder_id
 FROM
   products as t1
     INNER JOIN

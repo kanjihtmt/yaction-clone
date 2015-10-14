@@ -1,2 +1,13 @@
-%h1 Mypage::Ratings#new
-%p Find me in app/views/mypage/ratings/new.html.haml
+%h4 落札した商品の出品者を評価して下さい
+
+%p
+  %span 評価する出品者:
+  %span= @rating.seller.name
+
+= simple_form_for @rating, url: mypage_product_ratings_path(@product) do |f|
+  = f.hidden_field :bidder_id
+  = f.hidden_field :seller_id
+  = f.input :value, as: :select, collection: {'良い' => Rating::GOOD, '普通' => Rating::NORMAL, '悪い' => Rating::BAD}
+  = f.input :comment, as: :text, input_html: {rows: 5, class: 'textarea'}
+  .actions
+    = f.button :submit , '入札する', {class: 'btn btn-primary'}

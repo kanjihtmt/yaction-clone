@@ -20,4 +20,8 @@ module ApplicationHelper
   def expiration?(date)
     interval(:day, Time.now, date) == 0 ? false : true
   end
+
+  def judged?(seller_id, bidder_id)
+    Rating.exists?(seller_id: seller_id, bidder_id: bidder_id)
+  end
 end
