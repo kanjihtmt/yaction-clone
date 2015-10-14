@@ -56,7 +56,7 @@
               %p
                 = link_to @product.seller.name, seller_show_path(@product.seller)
                 さん
-              %p= "評価: todo"
+              %p= "評価: #{@product.seller.ratings_count}"
   .row
     .col-md-12
       .title 商品説明
