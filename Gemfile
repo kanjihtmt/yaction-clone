@@ -51,6 +51,7 @@ group :test do
   gem 'launchy'
   gem 'poltergeist'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end
 
 group :production do
