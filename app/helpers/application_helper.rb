@@ -10,6 +10,20 @@ module ApplicationHelper
     end
 
     title
+
+    # ちゃんと値が返されるか不安になるかもしれませんが最後のtitleはこの場合不要です。
+    # そうなるとtitleという変数自体いらなくなるので
+    # def get_title_of_products(status)
+    #   case status.to_i
+    #   when Product::PUBLISHED
+    #     '出品中の商品一覧'
+    #   when Product::UNUSED
+    #     '出品終了分の商品一覧'
+    #   else
+    #     '商品一覧'
+    #   end
+    # end
+    # と書けます
   end
 
   def interval(type, from, to)
