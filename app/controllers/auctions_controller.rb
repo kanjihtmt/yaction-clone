@@ -4,6 +4,8 @@ class AuctionsController < ApplicationController
 
   def index
     @products = Product.where(status: Product::PUBLISHED)
+    # ActiveRecord enums だったら、Product.published で取れるscopeが用意されています。
+    # もちろんスコープ名がタイポだとエラーになるので、この定数を利用する方法を使わなくて済みます。
   end
 
   def show
