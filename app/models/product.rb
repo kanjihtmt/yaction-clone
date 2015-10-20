@@ -7,6 +7,8 @@ class Product < ActiveRecord::Base
 
   scope :status, ->(status) do
     status = status.to_i unless status.blank?
+    # unless status.blank? は 空でないなら という否定の否定なので直感的に読みにくくなってしまうので
+    # if status.present? にすると 存在するなら という形になって読みやすくなります。
     case (status)
       when PUBLISHED
         where("status = ? and start_date <= ? and end_date >= ?", PUBLISHED, Time.now, Time.now)
