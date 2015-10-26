@@ -10,6 +10,7 @@ class Mypage::ProductsController < ApplicationController
 
   def bade
     @biddings = Bidding.find_group_by(current_user.id)
+    # Bidding しかデータを渡さないなら、Mypage::BiddingsController を作った方がいいのかも
   end
 
   def exibit

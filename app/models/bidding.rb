@@ -33,6 +33,8 @@ FROM
    FROM biddings WHERE bidder_id = ? GROUP BY bidder_id, product_id) as t2
     ON (t1.id = t2.product_id)"
 
+    #　Biddingモデルなのに products テーブルに biddings を結合していて違和感
+
     find_by_sql [sql, bidder_id]
   end
 end
