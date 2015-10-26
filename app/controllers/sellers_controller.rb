@@ -18,5 +18,6 @@ class SellersController < ApplicationController
   private
     def set_seller
       @seller = User.find(params[:seller_id])
+      # routes.rb で変更したので、params[:id] で取得するようにします。
     end
 end
