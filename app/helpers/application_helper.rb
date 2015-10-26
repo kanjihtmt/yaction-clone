@@ -38,5 +38,5 @@ module ApplicationHelper
   def judged?(seller_id, bidder_id)
     Rating.exists?(seller_id: seller_id, bidder_id: bidder_id)
   end
-  # この3つのタスクは全て binding モデルメソッドに移動したら、引数がいらなくなりそう。
+  # この3つはモデルメソッドに移動したら、引数を減らせそう
 end
