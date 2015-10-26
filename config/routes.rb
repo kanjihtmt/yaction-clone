@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :auctions, only: %i(show bid) do
+  resources :auctions, only: %i(show) do
     get :set_price, on: :member
     post :bid, on: :collection
   end
