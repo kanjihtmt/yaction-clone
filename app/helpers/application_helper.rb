@@ -33,6 +33,8 @@ module ApplicationHelper
 
   def expiration?(date)
     interval(:day, Time.now, date) == 0 ? false : true
+    # ややこしいので interval(:day, Time.now, date) != 0
+    # だけにすれば、三項演算子はいらない
   end
 
   def judged?(seller_id, bidder_id)

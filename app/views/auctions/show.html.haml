@@ -57,8 +57,7 @@
               %p
                 = link_to @product.seller.name, seller_show_path(@product.seller)
                 さん
-                -#link_to seller_show_path(@product.seller) do
-                -#  = "#{@product.seller.name} さん"
+                -#link_to "#{@product.seller.name} さん", seller_show_path(@product.seller) do
                 -# のほうが表示文字が集まっているので良いかも
               %p= "評価: #{@product.seller.ratings_count}"
   .row

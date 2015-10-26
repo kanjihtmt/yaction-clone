@@ -41,6 +41,7 @@
             %tr
               %td{rowspan: 3}= @seller.ratings_count
               %td{rowspan: 3}= "80%"
+              -# 未実装なら消しといてもいいかも
               %td 良い
               %td.good= @rating.good_count_of_week
               %td.good= @rating.good_count_of_month
@@ -61,5 +62,3 @@
               %td.bad= @rating.bad_count_of_year
               %td.bad= @rating.bad_count_in_hundred
               %td.bad= @rating.bad_count_in_thousand
-
-
