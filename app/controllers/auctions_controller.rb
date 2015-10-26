@@ -3,9 +3,7 @@ class AuctionsController < ApplicationController
   before_action :set_product, only: %i(show set_price)
 
   def index
-    @products = Product.where(status: Product::PUBLISHED)
-    # ActiveRecord enums だったら、Product.published で取れるscopeが用意されています。
-    # もちろんスコープ名がタイポだとエラーになるので、この定数を利用する方法を使わなくて済みます。
+    @products = Product.published
   end
 
   def show
