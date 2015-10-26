@@ -4,6 +4,8 @@ class AuctionsController < ApplicationController
 
   def index
     @products = Product.where(status: Product::PUBLISHED)
+    # ActiveRecord enums だったら、Product.published で取れるscopeが用意されています。
+    # もちろんスコープ名がタイポだとエラーになるので、この定数を利用する方法を使わなくて済みます。
   end
 
   def show
@@ -13,6 +15,13 @@ class AuctionsController < ApplicationController
     if @product.seller == current_user
       redirect_to auction_path(@product), alert: '出品者は入札できません' and return
     end
+    # ログインしてない状態で入札を押すとエラーが発生します。set_price も authenticate_user 対象かも。
+    # こういった 認証系のフィルターはonly指定ではなく、
+    # except指定で例外の場合だけを指定して漏れをなくしたほうが新しくメソッドが増えてもデフォルトで
+    # 作動するのでいい気がします。
+    #
+    # それか、ApplicationControllerで before_action :authenticate_user! を呼んであげて、
+    # 必要のない所だけ skip_before_action をしたほうが、DRYなコードになると思います。
     @bidding = current_user.biddings.build
     @bidding.product = @product unless @bidding.product
   end

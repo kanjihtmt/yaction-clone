@@ -5,10 +5,12 @@ class Mypage::ProductsController < ApplicationController
 
   def index
     @products = Product.where(seller: current_user).status(params[:status])
+    # current_user.products の方が記述がすっきりします。
   end
 
   def bade
     @biddings = Bidding.find_group_by(current_user.id)
+    # Bidding しかデータを渡さないなら、Mypage::BiddingsController を作った方がいいのかも
   end
 
   def exibit

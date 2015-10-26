@@ -44,6 +44,7 @@
             %td{colspan: 2}
               %p.em-title 現在価格
               %p.price-current= number_to_currency(@product.max_bidding ? @product.max_bidding.try(:price) : @product.price)
+              -# 現在価格は色々な場所でつかいそうなので、 @product.current_price みたいにしとくと便利かも。ロジックはこのままでOKです。
               .row
                 .col-md-12
                   - if time_limit > 0
@@ -56,6 +57,8 @@
               %p
                 = link_to @product.seller.name, seller_show_path(@product.seller)
                 さん
+                -#link_to "#{@product.seller.name} さん", seller_show_path(@product.seller) do
+                -# のほうが表示文字が集まっているので良いかも
               %p= "評価: #{@product.seller.ratings_count}"
   .row
     .col-md-12

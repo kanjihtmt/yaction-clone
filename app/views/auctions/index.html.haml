@@ -7,5 +7,9 @@
     .col-md-2.col-sm-3.col-xs-6
       = link_to product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png'),
           auction_path(product)
+      -# 横に長いと見づらいので
+      -#= link_to action_path(product) do
+      -#  = image_tag(product.image_url(:thumb) || 'no_image_for_product.png')
+
       %br
       = link_to product.name.truncate(10), auction_path(product)
