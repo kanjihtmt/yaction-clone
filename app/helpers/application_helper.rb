@@ -11,16 +11,6 @@ module ApplicationHelper
   end
 
   def interval(from, to)
-    return 0 if from > to
-    (to - from).to_i / 86400
+    Bidding.new.interval(from, to)
   end
-
-  def expiration?(date)
-    interval(Time.current, date) < 0
-  end
-
-  def judged?(seller_id, bidder_id)
-    Rating.exists?(seller_id: seller_id, bidder_id: bidder_id)
-  end
-  # この3つはモデルメソッドに移動したら、引数を減らせそう
 end

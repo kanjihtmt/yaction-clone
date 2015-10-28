@@ -12,6 +12,19 @@ class Bidding < ActiveRecord::Base
     product.save!
   end
 
+  def interval(from, to)
+    return 0 if from > to
+    (to - from).to_i / 86000
+  end
+
+  def expiration?
+    interval(Time.current, end_date) <= 0
+  end
+
+  def judged?
+    Rating.exists?(seller_id: seller_id, bidder_id: bidder_id)
+  end
+
   def max_bid_price
     return unless product
     return unless price

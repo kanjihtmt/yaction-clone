@@ -16,16 +16,16 @@
             - @biddings.each do |bidding|
               %tr
                 %td
-                  - if expiration?(bidding.end_date)
-                    %span.btn.btn-xs.btn-info{disabled: 'disabled'} 入札中
-                  - else
+                  - if bidding.expiration?
                     %span.btn.btn-xs.btn-danger{disabled: 'disabled'} 落札済
+                  - else
+                    %span.btn.btn-xs.btn-info{disabled: 'disabled'} 入札中
                 %td= image_tag Product.find(bidding.product_id).image_url(:thumb), {class: 'list-image-icon'}
                 %td= bidding.name
                 %td= number_to_currency bidding.price
                 %td= l bidding.end_date, format: :long
                 %td
-                  - unless expiration?(bidding.end_date) || judged?(bidding.seller_id, bidding.bidder_id)
+                  - unless bidding.expiration? || bidding.judged?
                     = link_to '評価する', new_mypage_product_ratings_path(bidding.product_id), {class: 'btn btn-success'}
 .row
   .col-md-12

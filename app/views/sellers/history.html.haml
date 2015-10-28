@@ -17,9 +17,8 @@
               %td.image= product.image_url(:thumb) ? image_tag(product.image_url(:thumb)) : image_tag('no_image_for_product.png')
               %td= product.name
               %td= product.max_bidding.try(:price)
-              -# product.current_price が使えそう
               %td= product.biddings_count
               - diff = interval(Time.current, product.end_date)
-              %td= diff ? "#{diff}日" : '終了'
+              %td= diff > 0 ? "#{diff}日" : '終了'
 
       = paginate(@products)

@@ -3,7 +3,7 @@ class SellersController < ApplicationController
 
   def history
     @products = @seller.products.page(params[:page]).per(PAGE_MAX)
-                    .where(status: Product::PUBLISHED).order(end_date: :desc)
+                  .published.order(end_date: :desc)
   end
 
   def show
