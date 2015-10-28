@@ -4,8 +4,7 @@ class Mypage::ProductsController < ApplicationController
   before_action :set_draft_product, only: %i(exibit pullup)
 
   def index
-    @products = Product.where(seller: current_user).status(params[:status])
-    # current_user.products の方が記述がすっきりします。
+    @products = current_user.products.status(params[:status])
   end
 
   def bade

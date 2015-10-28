@@ -9,10 +9,10 @@ class Product < ActiveRecord::Base
     status = status.to_i if status.present?
     case (status)
       when PUBLISHED
-        where("status = ? and start_date <= ? and end_date >= ?", PUBLISHED, Time.now, Time.now)
+        where("status = ? and start_date <= ? and end_date >= ?", PUBLISHED, Time.current, Time.current)
           .order(created_at: :desc)
       when UNUSED
-        where("status = ? or end_date < ?", UNUSED, Time.now).order(created_at: :desc)
+        where("status = ? or end_date < ?", UNUSED, Time.current).order(created_at: :desc)
         # Railsでは 現在の時刻は Time.current を使ったほうが行儀が良いです。
         # 参考URL 伊藤さんの qiita記事 http://qiita.com/jnchito/items/cae89ee43c30f5d6fa2c
       else

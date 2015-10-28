@@ -10,15 +10,13 @@ module ApplicationHelper
     end
   end
 
-  def interval(type, from, to)
-    return 0 if from > to || !%i(year month day).include?(type)
-    to.send(type) - from.send(type)
+  def interval(from, to)
+    return 0 if from > to
+    (to - from).to_i / 864000
   end
 
   def expiration?(date)
-    interval(:day, Time.now, date) == 0 ? false : true
-    # ややこしいので interval(:day, Time.now, date) != 0
-    # だけにすれば、三項演算子はいらない
+    interval(Time.current, date) < 0
   end
 
   def judged?(seller_id, bidder_id)
