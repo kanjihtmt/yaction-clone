@@ -12,7 +12,7 @@ module ApplicationHelper
 
   def interval(from, to)
     return 0 if from > to
-    (to - from).to_i / 864000
+    (to - from).to_i / 86400
   end
 
   def expiration?(date)

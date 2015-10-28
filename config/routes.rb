@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :sellers, only: %i(show) do
     member do
-      get :histroy
+      get :history
       get :rating
     end
   end
